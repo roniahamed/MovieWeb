@@ -4,6 +4,6 @@ from .model import MovieData
 from .serializers import MovieSerializer
 
 
-class MovieViewSets(viewsets.MovieSerializer):
+class MovieViewSet(viewsets.MovieSerializer):
     queryset = MovieData
     serializers = MovieSerializer
