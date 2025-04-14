@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from movies.views import MovieViewSet
+from movies.views import MovieViewSet, ActionViewSet, ComedyMovie
 
 router = routers.DefaultRouter()
-router.register('movies', MovieViewSet)
+router.register('movies', MovieViewSet, basename='movidata')
+router.register('action', ActionViewSet, basename='action')
+router.register('comedy', ComedyMovie, basename='comedy')
 
 urlpatterns = [
     path('', include(router.urls)),
