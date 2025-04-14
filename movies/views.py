@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .model import MovieData
+from .models import MovieData
 from .serializers import MovieSerializer
 
 
-class MovieViewSet(viewsets.MovieSerializer):
-    queryset = MovieData
-    serializers = MovieSerializer
+class MovieViewSet(viewsets.ModelViewSet):
+    queryset = MovieData.objects.all()
+    serializer_class = MovieSerializer

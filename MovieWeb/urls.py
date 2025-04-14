@@ -20,8 +20,9 @@ from rest_framework import routers
 from movies.views import MovieViewSet
 
 router = routers.DefaultRouter()
-router.register('movie', MovieViewSet)
+router.register('movies', MovieViewSet)
 
 urlpatterns = [
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
 ]
