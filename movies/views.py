@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from .models import MovieData
+from django.core.paginator import Paginator
 # from .serializers import MovieSerializer
 
 
@@ -21,4 +22,7 @@ from .models import MovieData
 
 def movie_data(request):
     movie_objects = MovieData.objects.all()
+    paginator = Paginator(movie_objects, 4)
+    page = request.GET.get('page')
+    movie_objects = paginator.get_page(page)
     return render(request, 'movies/movie_list.html',{'movie_objects':movie_objects})
